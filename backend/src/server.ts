@@ -4,9 +4,9 @@ dotenv.config();
 import app from './app';
 import { prisma } from './lib/prisma';
 
-const PORT = process.env.PORT || 5000;
+let port = Number(process.env.PORT) || 5000;
 
-async function startServer() {
+async function startServer(initialPort: number) {
   try {
     // Verify DB connection
     await prisma.$connect();
@@ -16,14 +16,27 @@ async function startServer() {
     console.warn(` PostgreSQL DB connection failed (${message}). Check your DATABASE_URL in .env`);
   }
 
-  app.listen(PORT, () => {
-    console.log(`====================================================`);
-    console.log(` Gather Platform Production Server (TypeScript + Prisma)`);
-    console.log(` Server URL: http://localhost:${PORT}`);
-    console.log(` Web App:    http://localhost:${PORT}/home.html`);
-    console.log(` Environment: ${process.env.NODE_ENV || 'development'}`);
-    console.log(`====================================================`);
-  });
+  function tryListen(p: number) {
+    const server = app.listen(p, () => {
+      console.log(`====================================================`);
+      console.log(` Gather Platform Server (TypeScript + Prisma)`);
+      console.log(` Server URL: http://localhost:${p}`);
+      console.log(` Web App:    http://localhost:${p}/home.html`);
+      console.log(` Environment: ${process.env.NODE_ENV || 'development'}`);
+      console.log(`====================================================`);
+    });
+
+    server.on('error', (err: NodeJS.ErrnoException) => {
+      if (err.code === 'EADDRINUSE') {
+        console.warn(`⚠️ Port ${p} is busy, automatically switching to port ${p + 1}...`);
+        tryListen(p + 1);
+      } else {
+        console.error('Server error:', err);
+      }
+    });
+  }
+
+  tryListen(initialPort);
 }
 
-startServer();
+startServer(port);
