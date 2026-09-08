@@ -20,15 +20,15 @@ export const loginSchema = z.object({
 // ── User ──────────────────────────────────────────────────────
 export const updateProfileSchema = z.object({
   full_name: z.string().min(2).max(100).optional(),
-  bio: z.string().max(300).optional(),
+  bio: z.string().max(500).optional(),
   location: z.string().max(100).optional(),
-  avatar_url: z.string().url('Invalid URL').or(z.literal('')).optional(),
+  avatar_url: z.string().optional(),
 });
 
 // ── Post ──────────────────────────────────────────────────────
 export const createPostSchema = z.object({
   content: z.string().min(1, 'Post content is required').max(2000),
-  image_url: z.string().url('Invalid image URL').optional().or(z.literal('')),
+  image_url: z.string().optional(),
 });
 
 // ── Comment ──────────────────────────────────────────────────

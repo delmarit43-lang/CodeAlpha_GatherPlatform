@@ -1,4 +1,32 @@
-/* Gather Platform - UI Utilities */
+const THEME_KEY = 'gather_theme';
+
+/**
+ * Initialize saved theme on document load
+ */
+export function initTheme() {
+  const savedTheme = localStorage.getItem(THEME_KEY) || 'warm';
+  setTheme(savedTheme);
+  return savedTheme;
+}
+
+/**
+ * Set active theme and save preference
+ * @param {'warm'|'dark'|'cyberpunk'|'ocean'} themeName 
+ */
+export function setTheme(themeName) {
+  document.documentElement.setAttribute('data-theme', themeName);
+  localStorage.setItem(THEME_KEY, themeName);
+}
+
+/**
+ * Get active saved theme
+ */
+export function getCurrentTheme() {
+  return localStorage.getItem(THEME_KEY) || 'warm';
+}
+
+// Auto-apply theme immediately
+initTheme();
 
 /**
  * Render Lucide icons automatically if lucide global is loaded

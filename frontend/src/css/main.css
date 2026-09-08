@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Color Palette - Warm Neutral & Forest Green */
+  /* Default Theme: Warm Editorial & Forest Green */
   --color-primary: #214E3B;
   --color-primary-hover: #193B2C;
   --color-primary-light: #EBF2EE;
@@ -61,6 +61,102 @@
   /* Transitions */
   --transition-fast: 0.15s ease;
   --transition-normal: 0.25s ease;
+}
+
+/* 🌙 Dark Midnight Emerald Theme */
+[data-theme="dark"] {
+  --color-primary: #10B981;
+  --color-primary-hover: #059669;
+  --color-primary-light: rgba(16, 185, 129, 0.15);
+  
+  --color-secondary: #34D399;
+  --color-secondary-hover: #10B981;
+  
+  --color-bg: #0F172A;
+  --color-surface: #1E293B;
+  --color-surface-hover: #334155;
+  
+  --color-text: #F8FAFC;
+  --color-text-muted: #94A3B8;
+  --color-text-light: #64748B;
+  
+  --color-border: #334155;
+  --color-border-light: #1E293B;
+  
+  --color-accent: #F59E0B;
+  --color-accent-hover: #D97706;
+  --color-accent-light: rgba(245, 158, 11, 0.15);
+  
+  --color-danger: #EF4444;
+  --color-danger-light: rgba(239, 68, 68, 0.15);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* 🌌 Cyberpunk Neon Theme */
+[data-theme="cyberpunk"] {
+  --color-primary: #8B5CF6;
+  --color-primary-hover: #7C3AED;
+  --color-primary-light: rgba(139, 92, 246, 0.18);
+  
+  --color-secondary: #06B6D4;
+  --color-secondary-hover: #0891B2;
+  
+  --color-bg: #090D16;
+  --color-surface: #131A29;
+  --color-surface-hover: #1E293D;
+  
+  --color-text: #F1F5F9;
+  --color-text-muted: #94A3B8;
+  --color-text-light: #64748B;
+  
+  --color-border: #233148;
+  --color-border-light: #162033;
+  
+  --color-accent: #EC4899;
+  --color-accent-hover: #DB2777;
+  --color-accent-light: rgba(236, 72, 153, 0.15);
+  
+  --color-danger: #F43F5E;
+  --color-danger-light: rgba(244, 63, 94, 0.15);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 14px rgba(139, 92, 246, 0.15);
+  --shadow-lg: 0 10px 30px rgba(139, 92, 246, 0.25);
+}
+
+/* 🌊 Oceanic Sapphire Theme */
+[data-theme="ocean"] {
+  --color-primary: #0284C7;
+  --color-primary-hover: #0369A1;
+  --color-primary-light: #E0F2FE;
+  
+  --color-secondary: #38BDF8;
+  --color-secondary-hover: #0284C7;
+  
+  --color-bg: #F0F9FF;
+  --color-surface: #FFFFFF;
+  --color-surface-hover: #F8FAFC;
+  
+  --color-text: #0C4A6E;
+  --color-text-muted: #0369A1;
+  --color-text-light: #7DD3FC;
+  
+  --color-border: #BAE6FD;
+  --color-border-light: #E0F2FE;
+  
+  --color-accent: #0D9488;
+  --color-accent-hover: #0F766E;
+  --color-accent-light: #CCFBF1;
+  
+  --color-danger: #E11D48;
+  --color-danger-light: #FFE4E6;
+
+  --shadow-sm: 0 1px 3px rgba(2, 132, 199, 0.08);
+  --shadow-md: 0 4px 12px rgba(2, 132, 199, 0.12);
+  --shadow-lg: 0 10px 25px rgba(2, 132, 199, 0.16);
 }
 
 /* CSS Reset */

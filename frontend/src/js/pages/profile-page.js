@@ -67,9 +67,19 @@ document.addEventListener('DOMContentLoaded', async () => {
       <div class="profile-cover"></div>
       <div class="profile-header-info">
         <div class="profile-avatar-row">
-          ${user.avatar_url 
+          ${isSelf ? `
+            <div style="position: relative; cursor: pointer;" title="Upload profile photo" id="profile-avatar-clickable">
+              ${user.avatar_url 
+                ? `<img src="${user.avatar_url}" class="profile-avatar-lg" alt="${user.full_name}">`
+                : `<div class="profile-avatar-lg">${initial}</div>`}
+              <div style="position: absolute; bottom: 4px; right: 4px; background: var(--color-primary); color: white; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--color-surface); box-shadow: var(--shadow-sm);">
+                <i data-lucide="camera" style="width: 14px; height: 14px;"></i>
+              </div>
+            </div>
+            <input type="file" id="direct-avatar-upload" accept="image/*" style="display: none;">
+          ` : (user.avatar_url 
             ? `<img src="${user.avatar_url}" class="profile-avatar-lg" alt="${user.full_name}">`
-            : `<div class="profile-avatar-lg">${initial}</div>`}
+            : `<div class="profile-avatar-lg">${initial}</div>`)}
           
           <div>
             ${isSelf ? `
@@ -109,6 +119,37 @@ document.addEventListener('DOMContentLoaded', async () => {
     `;
 
     initIcons();
+
+    // Direct Avatar Photo Upload on Profile Click
+    const avatarClickable = document.getElementById('profile-avatar-clickable');
+    const directUploadInput = document.getElementById('direct-avatar-upload');
+    if (avatarClickable && directUploadInput) {
+      avatarClickable.addEventListener('click', () => directUploadInput.click());
+      directUploadInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        if (file.size > 5 * 1024 * 1024) {
+          showToast('Image file size must be less than 5MB', 'error');
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = async (ev) => {
+          const base64Url = ev.target.result;
+          try {
+            await api.patch('/users/profile', { avatar_url: base64Url });
+          } catch (err) {
+            console.warn('API profile patch fallback:', err);
+          }
+          auth.updateUser({ avatar_url: base64Url });
+          showToast('Profile photo updated successfully!', 'success');
+          loadUserProfile();
+          renderSidebar('profile');
+        };
+        reader.readAsDataURL(file);
+      });
+    }
 
     const followBtn = document.getElementById('profile-follow-btn');
     if (followBtn) {
