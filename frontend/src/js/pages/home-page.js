@@ -17,19 +17,26 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderMobileNav('home');
   setupCreatePostModal(handleNewPostCreated);
 
-  const currentUser = auth.getUser();
   const feedContainer = document.getElementById('feed-posts-container');
   const inlineForm = document.getElementById('inline-create-post-form');
   const inlineTextarea = document.getElementById('inline-post-textarea');
   const inlineAvatar = document.getElementById('inline-user-avatar');
 
-  // Render current user avatar in inline create post box
-  if (inlineAvatar && currentUser) {
-    const initial = currentUser.full_name ? currentUser.full_name[0].toUpperCase() : 'U';
-    inlineAvatar.innerHTML = currentUser.avatar_url 
-      ? `<img src="${currentUser.avatar_url}" class="user-avatar" alt="${currentUser.full_name}">`
-      : `<div class="user-avatar">${initial}</div>`;
+  function updateInlineAvatar() {
+    const user = auth.getUser();
+    if (inlineAvatar && user) {
+      const initial = user.full_name ? user.full_name[0].toUpperCase() : 'U';
+      inlineAvatar.innerHTML = user.avatar_url 
+        ? `<img src="${user.avatar_url}" class="user-avatar" alt="${user.full_name}">`
+        : `<div class="user-avatar">${initial}</div>`;
+    }
   }
+
+  updateInlineAvatar();
+
+  window.addEventListener('gather:user-updated', () => {
+    updateInlineAvatar();
+  });
 
   // Handle inline create post submission
   if (inlineForm) {

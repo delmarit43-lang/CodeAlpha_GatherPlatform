@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   function renderProfileHeader(user) {
     const currentUser = auth.getUser();
     const isSelf = currentUser && currentUser.username === user.username;
+    const avatarUrl = (isSelf && currentUser?.avatar_url) ? currentUser.avatar_url : user.avatar_url;
     const initial = user.full_name ? user.full_name[0].toUpperCase() : 'U';
     const joinedDate = formatDateLong(user.created_at || new Date());
 
@@ -69,16 +70,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         <div class="profile-avatar-row">
           ${isSelf ? `
             <div style="position: relative; cursor: pointer;" title="Upload profile photo" id="profile-avatar-clickable">
-              ${user.avatar_url 
-                ? `<img src="${user.avatar_url}" class="profile-avatar-lg" alt="${user.full_name}">`
+              ${avatarUrl 
+                ? `<img src="${avatarUrl}" class="profile-avatar-lg" alt="${user.full_name}">`
                 : `<div class="profile-avatar-lg">${initial}</div>`}
               <div style="position: absolute; bottom: 4px; right: 4px; background: var(--color-primary); color: white; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--color-surface); box-shadow: var(--shadow-sm);">
                 <i data-lucide="camera" style="width: 14px; height: 14px;"></i>
               </div>
             </div>
             <input type="file" id="direct-avatar-upload" accept="image/*" style="display: none;">
-          ` : (user.avatar_url 
-            ? `<img src="${user.avatar_url}" class="profile-avatar-lg" alt="${user.full_name}">`
+          ` : (avatarUrl 
+            ? `<img src="${avatarUrl}" class="profile-avatar-lg" alt="${user.full_name}">`
             : `<div class="profile-avatar-lg">${initial}</div>`)}
           
           <div>
@@ -229,4 +230,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     initIcons();
     attachPostEventListeners(feedContainer);
   }
+
+  window.addEventListener('gather:user-updated', () => {
+    loadUserProfile();
+  });
 });

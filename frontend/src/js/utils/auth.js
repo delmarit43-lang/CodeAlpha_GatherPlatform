@@ -40,6 +40,7 @@ export const auth = {
     if (user) {
       const newUser = { ...user, ...updatedFields };
       localStorage.setItem(USER_KEY, JSON.stringify(newUser));
+      window.dispatchEvent(new CustomEvent('gather:user-updated', { detail: newUser }));
       return newUser;
     }
     return null;
