@@ -1,0 +1,144 @@
+/* Gather Platform - Auth Pages (Login & Register) */
+
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+  padding: 24px 16px;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 920px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  overflow: hidden;
+  min-height: 540px;
+}
+
+/* Left Brand Panel */
+.auth-brand-panel {
+  flex: 1;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.auth-brand-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-family-heading);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-surface);
+}
+
+.auth-brand-icon {
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.auth-brand-content {
+  margin: auto 0;
+}
+
+.auth-brand-title {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.auth-brand-desc {
+  font-size: var(--font-size-base);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+}
+
+.auth-brand-footer {
+  font-size: var(--font-size-xs);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Right Form Panel */
+.auth-form-panel {
+  flex: 1.1;
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-form-title {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 6px;
+}
+
+.auth-form-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: 28px;
+}
+
+.auth-error-alert {
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-danger-light);
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+  margin-bottom: 20px;
+  border: 1px solid rgba(211, 47, 47, 0.2);
+}
+
+.auth-footer-link {
+  margin-top: 24px;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.auth-footer-link a {
+  font-weight: 600;
+}
+
+/* Responsive Auth Layout */
+@media (max-width: 768px) {
+  .auth-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .auth-brand-panel {
+    padding: 32px 24px;
+  }
+
+  .auth-brand-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .auth-form-panel {
+    padding: 32px 24px;
+  }
+}

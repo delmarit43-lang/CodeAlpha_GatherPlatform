@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile / Gather</title>
+  <meta name="description" content="View user profile and posts on Gather.">
+  <link rel="stylesheet" href="./src/css/main.css">
+  <link rel="stylesheet" href="./src/css/layout.css">
+  <link rel="stylesheet" href="./src/css/components.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="app-wrapper">
+    <div class="app-container">
+      <div id="sidebar-left-container"></div>
+
+      <main class="main-feed-container">
+        <header class="page-header">
+          <h1 class="page-title">Profile</h1>
+        </header>
+
+        <!-- Dynamic Profile Header -->
+        <div id="profile-header-container">
+          <div class="loading-box">Loading profile header...</div>
+        </div>
+
+        <!-- Profile Tabs -->
+        <div class="tabs-bar">
+          <button class="tab-btn active" data-tab="posts">Posts</button>
+          <button class="tab-btn" data-tab="replies">Replies</button>
+          <button class="tab-btn" data-tab="media">Media</button>
+          <button class="tab-btn" data-tab="likes">Likes</button>
+        </div>
+
+        <!-- Profile Posts Feed -->
+        <div id="profile-posts-container">
+          <div class="loading-box">Loading posts...</div>
+        </div>
+      </main>
+
+      <div id="sidebar-right-container"></div>
+    </div>
+  </div>
+
+  <div id="mobile-nav-container"></div>
+
+  <script type="module" src="./src/js/pages/profile-page.js"></script>
+</body>
+</html>

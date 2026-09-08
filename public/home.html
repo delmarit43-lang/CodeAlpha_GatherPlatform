@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home / Gather</title>
+  <meta name="description" content="Gather home feed - latest posts from your community.">
+  <link rel="stylesheet" href="./src/css/main.css">
+  <link rel="stylesheet" href="./src/css/layout.css">
+  <link rel="stylesheet" href="./src/css/components.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="app-wrapper">
+    <div class="app-container">
+      <!-- Left Sidebar Container -->
+      <div id="sidebar-left-container"></div>
+
+      <!-- Center Main Feed -->
+      <main class="main-feed-container">
+        <header class="page-header">
+          <h1 class="page-title">Home</h1>
+          <a href="/home.html" class="mobile-header-logo brand-logo" style="margin: 0;">
+            <div class="brand-icon" style="width: 28px; height: 28px; font-size: 15px;">G</div>
+            <span style="font-size: 18px;">Gather</span>
+          </a>
+        </header>
+
+        <!-- Inline Create Post Widget -->
+        <div class="create-post-card">
+          <div id="inline-user-avatar"></div>
+          <form id="inline-create-post-form" class="create-post-form">
+            <textarea id="inline-post-textarea" class="create-post-textarea" placeholder="Share something with your community..."></textarea>
+            <div class="create-post-actions">
+              <div class="media-upload-options">
+                <button type="button" class="btn-icon-label" onclick="window.openCreatePostModal && window.openCreatePostModal()">
+                  <i data-lucide="image" style="width: 18px;"></i>
+                  <span>Photo</span>
+                </button>
+              </div>
+              <button type="submit" class="btn btn-primary btn-sm">Post</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Feed Posts List -->
+        <div id="feed-posts-container">
+          <div class="loading-box">Loading feed...</div>
+        </div>
+      </main>
+
+      <!-- Right Sidebar Container -->
+      <div id="sidebar-right-container"></div>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Navigation Container -->
+  <div id="mobile-nav-container"></div>
+
+  <script type="module" src="./src/js/pages/home-page.js"></script>
+</body>
+</html>

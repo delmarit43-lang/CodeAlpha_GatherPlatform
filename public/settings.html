@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings / Gather</title>
+  <meta name="description" content="Manage your Gather profile and account settings.">
+  <link rel="stylesheet" href="./src/css/main.css">
+  <link rel="stylesheet" href="./src/css/layout.css">
+  <link rel="stylesheet" href="./src/css/components.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="app-wrapper">
+    <div class="app-container">
+      <div id="sidebar-left-container"></div>
+
+      <main class="main-feed-container">
+        <header class="page-header">
+          <h1 class="page-title">Account Settings</h1>
+        </header>
+
+        <div style="padding: 24px;">
+          <form id="settings-profile-form">
+            <h3 class="widget-title" style="margin-bottom: 16px;">Profile Information</h3>
+
+            <div class="form-group">
+              <label class="form-label" for="setting-fullname">Full Name</label>
+              <input type="text" id="setting-fullname" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="setting-username">Username</label>
+              <input type="text" id="setting-username" class="form-control" disabled style="background-color: var(--color-bg); opacity: 0.8;">
+              <span class="text-muted text-sm">Username cannot be changed after creation.</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="setting-email">Email Address</label>
+              <input type="email" id="setting-email" class="form-control" disabled style="background-color: var(--color-bg); opacity: 0.8;">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="setting-bio">Bio</label>
+              <textarea id="setting-bio" class="form-control" rows="3" placeholder="Tell the community a bit about yourself..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="setting-location">Location</label>
+              <input type="text" id="setting-location" class="form-control" placeholder="e.g. Hargeisa, Somaliland">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="setting-avatar">Avatar Image URL</label>
+              <input type="url" id="setting-avatar" class="form-control" placeholder="https://example.com/avatar.jpg">
+            </div>
+
+            <div style="display: flex; gap: 12px; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--color-border-light);">
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+          </form>
+
+          <div style="margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--color-border-light);">
+            <h3 class="widget-title" style="color: var(--color-danger);">Danger Zone</h3>
+            <p class="text-muted text-sm" style="margin-bottom: 14px;">Sign out of your session on this device.</p>
+            <button id="settings-logout-btn" class="btn btn-secondary" style="color: var(--color-danger); border-color: var(--color-danger);">
+              <i data-lucide="log-out" style="width: 16px;"></i>
+              <span>Log out of Gather</span>
+            </button>
+          </div>
+        </div>
+      </main>
+
+      <div id="sidebar-right-container"></div>
+    </div>
+  </div>
+
+  <div id="mobile-nav-container"></div>
+
+  <script type="module" src="./src/js/pages/settings-page.js"></script>
+</body>
+</html>

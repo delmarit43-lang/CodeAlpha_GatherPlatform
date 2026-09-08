@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Gather</title>
+  <meta name="description" content="Create an account on Gather to join genuine community conversations.">
+  <link rel="stylesheet" href="./src/css/main.css">
+  <link rel="stylesheet" href="./src/css/components.css">
+  <link rel="stylesheet" href="./src/css/auth.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="auth-wrapper">
+    <div class="auth-container">
+      <!-- Left Brand Panel -->
+      <div class="auth-brand-panel">
+        <div class="auth-brand-header">
+          <div class="auth-brand-icon">G</div>
+          <span>Gather</span>
+        </div>
+
+        <div class="auth-brand-content">
+          <h1 class="auth-brand-title">Join the conversation.</h1>
+          <p class="auth-brand-desc">
+            Build your personal network, share knowledge, and discover discussions from creators, developers, and educators.
+          </p>
+        </div>
+
+        <div class="auth-brand-footer">
+          &copy; 2026 Gather Platform • CodeAlpha Full Stack Internship
+        </div>
+      </div>
+
+      <!-- Right Form Panel -->
+      <div class="auth-form-panel">
+        <h2 class="auth-form-title">Create Account</h2>
+        <p class="auth-form-subtitle">Fill in your information to get started.</p>
+
+        <div id="auth-error-alert" class="auth-error-alert hidden"></div>
+
+        <form id="register-form">
+          <div class="form-group">
+            <label class="form-label" for="reg-fullname">Full Name</label>
+            <input type="text" id="reg-fullname" class="form-control" placeholder="e.g. Ahmed Yusuf" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-username">Username</label>
+            <input type="text" id="reg-username" class="form-control" placeholder="e.g. ahmedy" required pattern="[a-zA-Z0-9_]{3,20}">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-email">Email Address</label>
+            <input type="email" id="reg-email" class="form-control" placeholder="ahmed@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-password">Password</label>
+            <input type="password" id="reg-password" class="form-control" placeholder="At least 6 characters" required minlength="6">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-confirm-password">Confirm Password</label>
+            <input type="password" id="reg-confirm-password" class="form-control" placeholder="Repeat your password" required minlength="6">
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full" style="padding: 12px; margin-top: 10px;">
+            Create Account
+          </button>
+        </form>
+
+        <div class="auth-footer-link">
+          Already have an account? <a href="./login.html">Log in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./src/js/pages/auth-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gather - A place for conversations that matter</title>
+  <script type="module">
+    import { auth } from './src/js/utils/auth.js';
+    if (auth.isAuthenticated()) {
+      window.location.href = '/home.html';
+    } else {
+      window.location.href = '/login.html';
+    }
+  </script>
+</head>
+<body style="background-color: #F7F5EF; display: flex; align-items: center; justify-content: center; height: 100vh; font-family: sans-serif; color: #69736D;">
+  <p>Redirecting to Gather...</p>
+</body>
+</html>

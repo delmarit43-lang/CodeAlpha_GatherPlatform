@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore / Gather</title>
+  <meta name="description" content="Discover trending topics and people on Gather.">
+  <link rel="stylesheet" href="./src/css/main.css">
+  <link rel="stylesheet" href="./src/css/layout.css">
+  <link rel="stylesheet" href="./src/css/components.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="app-wrapper">
+    <div class="app-container">
+      <div id="sidebar-left-container"></div>
+
+      <main class="main-feed-container">
+        <header class="page-header" style="height: auto; padding: 12px 20px; flex-direction: column; gap: 12px; align-items: stretch;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <h1 class="page-title">Explore</h1>
+          </div>
+          <form id="explore-search-form" style="display: flex; align-items: center; gap: 10px; background: var(--color-bg); padding: 8px 14px; border-radius: var(--radius-md); border: 1px solid var(--color-border-light);">
+            <i data-lucide="search" style="color: var(--color-text-muted); width: 18px;"></i>
+            <input type="text" id="explore-search-input" placeholder="Search people or topics..." style="border: none; outline: none; background: transparent; width: 100%; font-size: 15px;">
+            <button type="submit" class="btn btn-primary btn-sm">Search</button>
+          </form>
+        </header>
+
+        <div id="explore-results-container">
+          <div style="padding: 20px;">
+            <h3 class="widget-title">Trending Today</h3>
+            <div class="trending-list" style="margin-bottom: 24px;">
+              <a href="/explore.html?q=%23SomalilandTech" class="trending-item" style="padding: 12px; background: var(--color-bg); border-radius: var(--radius-md); margin-bottom: 8px;">
+                <span class="trending-tag" style="font-size: 16px;">#SomalilandTech</span>
+                <span class="trending-count">1,420 posts from local developers & startups</span>
+              </a>
+              <a href="/explore.html?q=%23Photography" class="trending-item" style="padding: 12px; background: var(--color-bg); border-radius: var(--radius-md); margin-bottom: 8px;">
+                <span class="trending-tag" style="font-size: 16px;">#Photography</span>
+                <span class="trending-count">890 posts</span>
+              </a>
+              <a href="/explore.html?q=%23WebDevelopment" class="trending-item" style="padding: 12px; background: var(--color-bg); border-radius: var(--radius-md); margin-bottom: 8px;">
+                <span class="trending-tag" style="font-size: 16px;">#WebDevelopment</span>
+                <span class="trending-count">750 posts</span>
+              </a>
+              <a href="/explore.html?q=%23Books" class="trending-item" style="padding: 12px; background: var(--color-bg); border-radius: var(--radius-md); margin-bottom: 8px;">
+                <span class="trending-tag" style="font-size: 16px;">#Books</span>
+                <span class="trending-count">530 posts</span>
+              </a>
+              <a href="/explore.html?q=%23Entrepreneurship" class="trending-item" style="padding: 12px; background: var(--color-bg); border-radius: var(--radius-md);">
+                <span class="trending-tag" style="font-size: 16px;">#Entrepreneurship</span>
+                <span class="trending-count">410 posts</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <div id="sidebar-right-container"></div>
+    </div>
+  </div>
+
+  <div id="mobile-nav-container"></div>
+
+  <script type="module" src="./src/js/pages/explore-page.js"></script>
+</body>
+</html>
