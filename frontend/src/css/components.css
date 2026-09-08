@@ -8,41 +8,52 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 8px 16px;
-  border-radius: var(--radius-md);
-  font-weight: 600;
+  padding: 9px 18px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
   font-size: var(--font-size-sm);
   transition: all var(--transition-fast);
   cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn:active {
+  transform: scale(0.97);
 }
 
 .btn-primary {
-  background-color: var(--color-primary);
-  color: var(--color-surface);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(30, 70, 54, 0.2);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-hover);
+  box-shadow: 0 6px 18px rgba(30, 70, 54, 0.3);
+  transform: translateY(-1px);
 }
 
 .btn-secondary {
   background-color: var(--color-surface);
   color: var(--color-text);
   border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-secondary:hover {
   background-color: var(--color-bg);
   border-color: var(--color-text-muted);
+  transform: translateY(-1px);
 }
 
 .btn-accent {
-  background-color: var(--color-accent);
-  color: var(--color-surface);
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-hover));
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(194, 89, 63, 0.2);
 }
 
 .btn-accent:hover {
-  background-color: var(--color-accent-hover);
+  box-shadow: 0 6px 18px rgba(194, 89, 63, 0.3);
+  transform: translateY(-1px);
 }
 
 .btn-sm {
@@ -712,30 +723,31 @@
 
 /* Form Controls */
 .form-group {
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .form-label {
   display: block;
   font-size: var(--font-size-sm);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text);
-  margin-bottom: 6px;
+  margin-bottom: 7px;
 }
 
 .form-control {
   width: 100%;
-  padding: 10px 14px;
+  padding: 11px 16px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   font-size: var(--font-size-base);
   color: var(--color-text);
   background-color: var(--color-surface);
   outline: none;
-  transition: border-color var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .form-control:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(33, 78, 59, 0.1);
+  box-shadow: 0 0 0 4px rgba(30, 70, 54, 0.12);
+  background-color: var(--color-surface);
 }
