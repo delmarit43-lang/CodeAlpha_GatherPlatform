@@ -1,8 +1,14 @@
 # CodeAlpha_GatherPlatform — Full-Stack Social Media Platform
 
-A production-ready, modular full-stack social media platform developed for:
-
-**CodeAlpha Full Stack Development Internship, Task 2**
+### 📋 Internship Metadata & Student Details
+- **Name**: Siddiiq Cawil Cabdilaahi
+- **Internship ID**: CA/DF1/259789
+- **Program**: Full Stack Development Internship
+- **Organization**: CodeAlpha
+- **Task**: Task 2
+- **Project**: Gather Platform
+- **Duration**: September 1, 2026 to September 30, 2026
+- **Repository**: CodeAlpha_GatherPlatform
 
 ---
 
@@ -10,13 +16,15 @@ A production-ready, modular full-stack social media platform developed for:
 
 **Gather Platform** (`CodeAlpha_GatherPlatform`) is a modern, community-focused social network designed around genuine human connection, local communities, technology projects, and thoughtful discussions.
 
-The system features a **Vanilla JS (ES Modules) Frontend** backed by a **Modular TypeScript, Express.js, Prisma ORM, and PostgreSQL 18 Backend**.
+The system is organized into a clean **Separated Modular Architecture**:
+- 🎨 **`frontend/`**: Vanilla JS (ES Modules) single-page components, CSS design tokens, HTML pages.
+- ⚡ **`backend/`**: Modular TypeScript, Express.js REST API, Prisma ORM, and PostgreSQL 18.
 
 ---
 
 ## 🛠️ Technology Stack
 
-### Backend Architecture
+### 🔹 Backend (`/backend`)
 - **Language & Runtime**: Node.js & TypeScript
 - **Framework**: Express.js
 - **ORM**: Prisma ORM v5
@@ -25,38 +33,52 @@ The system features a **Vanilla JS (ES Modules) Frontend** backed by a **Modular
 - **Input Validation**: Zod schema validation
 - **Security**: Helmet HTTP headers, CORS, Express Rate Limiting
 
-### Frontend Architecture
+### 🔹 Frontend (`/frontend`)
 - **HTML5** & **Vanilla CSS** (Custom Design Tokens, Warm Editorial Theme)
 - **Vanilla JavaScript** (ES Modules, Fetch API, Optimistic UI Updates)
 - **Lucide Icons**
 
 ---
 
-## 📁 Repository Architecture
+## 📁 Repository Directory Structure
 
 ```text
 CodeAlpha_GatherPlatform/
-├── prisma/
-│   ├── schema.prisma       # Database models (User, Post, Like, Comment, Follow, Bookmark, Notification)
-│   └── seed.ts             # Automated Prisma seeding script
-├── public/                 # Vanilla JS Frontend (CodeAlpha UI)
-├── server/
+├── frontend/               # Vanilla JS Frontend UI
+│   ├── index.html
+│   ├── home.html
+│   ├── login.html
+│   ├── register.html
+│   ├── explore.html
+│   ├── profile.html
+│   ├── notifications.html
+│   ├── bookmarks.html
+│   ├── settings.html
+│   ├── post.html
 │   └── src/
-│       ├── controllers/    # Route handlers (Auth, User, Post, Comment, Bookmark, Notification)
-│       ├── lib/            # Prisma Client singleton
-│       ├── middleware/     # Auth & Error Handling middleware
-│       ├── routes/         # Express API routes
-│       ├── services/       # Core business logic layer
-│       ├── types/          # Shared TypeScript interfaces
-│       ├── utils/          # JWT helpers
-│       ├── validators/     # Zod input validation schemas
-│       ├── app.ts          # Express application setup
+│       ├── css/            # Custom CSS styling modules
+│       └── js/             # JS Components, Pages, and API utilities
+├── backend/                # TypeScript Express & Prisma Backend
+│   ├── prisma/             # Schema definitions and seed scripts
+│   │   ├── schema.prisma
+│   │   └── seed.ts
+│   └── src/
+│       ├── config/         # System configurations
+│       ├── controllers/    # Route Controllers
+│       ├── lib/            # Prisma Singleton Client
+│       ├── middleware/     # Auth & Error Handler Middleware
+│       ├── routes/         # Express API Router
+│       ├── services/       # Core Business Logic Layer
+│       ├── types/          # TypeScript Interfaces
+│       ├── utils/          # JWT utilities
+│       ├── validators/     # Zod Validation Schemas
+│       ├── app.ts          # Express app configuration
 │       └── server.ts       # Server entry point
-├── BACKEND_README.md
-├── README.md
-├── tsconfig.json
-├── package.json
-└── .env
+├── BACKEND_README.md       # Full API Documentation & DB Setup
+├── tsconfig.json           # Root TypeScript configuration
+├── package.json            # Project dependencies & npm scripts
+├── .gitignore              # Ignored files (.env, node_modules, dist)
+└── README.md               # Main project documentation
 ```
 
 ---
@@ -69,7 +91,7 @@ CodeAlpha_GatherPlatform/
 
 ### 2. Clone & Install Dependencies
 ```bash
-git clone https://github.com/YourUsername/CodeAlpha_GatherPlatform.git
+git clone git@github.com:delmarit43-lang/CodeAlpha_GatherPlatform.git
 cd CodeAlpha_GatherPlatform
 npm install
 ```
@@ -85,7 +107,9 @@ CLIENT_URL="http://localhost:5000"
 NODE_ENV="development"
 ```
 
-### 4. Database Setup & Seeding
+> 🔒 **Security Note**: `.env` is explicitly included in `.gitignore` and is **never** tracked or committed to GitHub.
+
+### 4. Database Push & Seeding
 ```bash
 # Push Prisma schema to PostgreSQL database
 npm run prisma:push
@@ -94,9 +118,9 @@ npm run prisma:push
 npm run seed
 ```
 
-### 5. Build & Start the Server
+### 5. Build & Start Server
 ```bash
-# Build TypeScript
+# Build TypeScript backend
 npm run build
 
 # Start production server
@@ -116,11 +140,3 @@ Access the application in your browser at:
 | User | `ahmed@gather.com` | `password123` |
 | User | `ayaan@gather.com` | `password123` |
 | User | `maryan@gather.com` | `password123` |
-
----
-
-## 👤 Author Information
-
-- **Project**: CodeAlpha Full Stack Development Internship — Task 2
-- **Repository Name**: `CodeAlpha_GatherPlatform`
-- **Developer**: Siddiiq Cawil (CodeAlpha Full Stack Development Intern)

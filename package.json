@@ -6,15 +6,15 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
-    "dev": "ts-node-dev --respawn --transpile-only server/src/server.ts",
-    "prisma:generate": "prisma generate",
-    "prisma:push": "prisma db push",
-    "prisma:migrate": "prisma migrate dev",
-    "prisma:seed": "ts-node prisma/seed.ts",
-    "seed": "ts-node prisma/seed.ts"
+    "dev": "ts-node-dev --respawn --transpile-only backend/src/server.ts",
+    "prisma:generate": "prisma generate --schema=backend/prisma/schema.prisma",
+    "prisma:push": "prisma db push --schema=backend/prisma/schema.prisma",
+    "prisma:seed": "ts-node backend/prisma/seed.ts",
+    "seed": "ts-node backend/prisma/seed.ts"
   },
   "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "schema": "backend/prisma/schema.prisma",
+    "seed": "ts-node backend/prisma/seed.ts"
   },
   "keywords": [
     "social-media",
@@ -26,7 +26,7 @@
     "fullstack",
     "codealpha"
   ],
-  "author": "CodeAlpha Full Stack Development Intern",
+  "author": "Siddiiq Cawil Cabdilaahi",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.22.0",
