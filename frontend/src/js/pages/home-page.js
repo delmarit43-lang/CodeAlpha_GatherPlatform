@@ -25,10 +25,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   function updateInlineAvatar() {
     const user = auth.getUser();
     if (inlineAvatar && user) {
-      const initial = user.full_name ? user.full_name[0].toUpperCase() : 'U';
-      inlineAvatar.innerHTML = user.avatar_url 
-        ? `<img src="${user.avatar_url}" class="user-avatar" alt="${user.full_name}">`
-        : `<div class="user-avatar">${initial}</div>`;
+      const avatarUrl = user.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.full_name || 'User')}&background=6366f1&color=ffffff&bold=true&size=128`;
+      inlineAvatar.innerHTML = `<img src="${avatarUrl}" class="user-avatar" alt="${user.full_name}">`;
     }
   }
 
@@ -36,6 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   window.addEventListener('gather:user-updated', () => {
     updateInlineAvatar();
+    loadFeedPosts();
   });
 
   // Handle inline create post submission

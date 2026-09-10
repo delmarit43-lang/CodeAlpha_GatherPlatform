@@ -20,12 +20,26 @@ function formatPostContent(content) {
  */
 export function createPostCardHTML(post) {
   const currentUser = auth.getUser();
-  const isOwner = currentUser && (currentUser.id === post.user_id || currentUser.id === post.user?.id);
-  const author = post.user || {
+  const postUsername = post.user?.username || post.username;
+  const isOwner = currentUser && (
+    currentUser.id === post.user_id ||
+    currentUser.id === post.user?.id ||
+    (currentUser.username && postUsername && currentUser.username.toLowerCase() === postUsername.toLowerCase())
+  );
+
+  let author = post.user || {
     full_name: post.full_name || 'Anonymous User',
     username: post.username || 'user',
     avatar_url: post.avatar_url || null
   };
+
+  if (isOwner && currentUser) {
+    author = {
+      ...author,
+      full_name: currentUser.full_name || author.full_name,
+      avatar_url: currentUser.avatar_url || author.avatar_url
+    };
+  }
 
   const avatarUrl = author.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(author.full_name || 'User')}&background=6366f1&color=ffffff&bold=true&size=128`;
   const formattedTime = formatTimeAgo(post.created_at);
