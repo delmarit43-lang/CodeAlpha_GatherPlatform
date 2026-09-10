@@ -10,20 +10,15 @@ async function startServer(initialPort: number) {
   try {
     // Verify DB connection
     await prisma.$connect();
-    console.log(' Successfully connected to PostgreSQL database via Prisma!');
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : String(err);
-    console.warn(` PostgreSQL DB connection failed (${message}). Check your DATABASE_URL in .env`);
+    console.warn(`PostgreSQL DB connection failed (${message}). Check your DATABASE_URL in .env`);
   }
 
   function tryListen(p: number) {
     const server = app.listen(p, () => {
-      console.log(`====================================================`);
-      console.log(` Gather Platform Server (TypeScript + Prisma)`);
-      console.log(` Server URL: http://localhost:${p}`);
-      console.log(` Web App:    http://localhost:${p}/home.html`);
-      console.log(` Environment: ${process.env.NODE_ENV || 'development'}`);
-      console.log(`====================================================`);
+      console.log(`Server URL: http://localhost:${p}`);
+      console.log(`Web App:    http://localhost:${p}/home.html`);
     });
 
     server.on('error', (err: NodeJS.ErrnoException) => {

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",
-    "dev": "ts-node-dev --respawn --transpile-only backend/src/server.ts",
+    "dev": "ts-node-dev --respawn --transpile-only --quiet backend/src/server.ts",
     "prisma:generate": "prisma generate --schema=backend/prisma/schema.prisma",
     "prisma:push": "prisma db push --schema=backend/prisma/schema.prisma",
     "prisma:seed": "ts-node backend/prisma/seed.ts",
