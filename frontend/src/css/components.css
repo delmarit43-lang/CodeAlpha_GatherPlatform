@@ -751,3 +751,160 @@
   box-shadow: 0 0 0 4px rgba(30, 70, 54, 0.12);
   background-color: var(--color-surface);
 }
+
+/* ==========================================================================
+   RESPONSIVE COMPONENT ADJUSTMENTS (ALL DEVICES)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Prevent iOS zoom on input focus */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+
+  /* Create Post Box */
+  .create-post-card {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .create-post-textarea {
+    min-height: 60px;
+  }
+
+  .create-post-actions {
+    padding-top: 10px;
+  }
+
+  /* Post Card */
+  .post-card {
+    padding: 14px 12px;
+    gap: 10px;
+  }
+
+  .user-avatar {
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
+  }
+
+  .post-user-name {
+    font-size: 14px;
+  }
+
+  .post-user-handle, .post-time {
+    font-size: 12px;
+  }
+
+  .post-content {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .post-image-box {
+    max-height: 280px;
+  }
+
+  .post-image-box img {
+    max-height: 280px;
+  }
+
+  .post-actions {
+    max-width: 100%;
+    width: 100%;
+    justify-content: space-between;
+    padding-top: 4px;
+  }
+
+  .action-btn {
+    padding: 6px 6px;
+    font-size: 12px;
+    gap: 4px;
+    min-height: 38px;
+  }
+
+  .action-btn svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  /* Profile Header */
+  .profile-cover {
+    height: 120px;
+  }
+
+  .profile-header-info {
+    padding: 0 14px 16px 14px;
+  }
+
+  .profile-avatar-row {
+    margin-top: -40px;
+    margin-bottom: 12px;
+  }
+
+  .profile-avatar-lg {
+    width: 76px;
+    height: 76px;
+    font-size: 26px;
+    border-width: 3px;
+  }
+
+  .profile-details-name {
+    font-size: 20px;
+  }
+
+  .profile-meta-row {
+    gap: 12px;
+    font-size: 12px;
+  }
+
+  .profile-stats-row {
+    gap: 14px;
+    font-size: 13px;
+  }
+
+  /* Modals */
+  .modal-card {
+    max-width: 95%;
+    margin: 10px;
+    border-radius: var(--radius-md);
+  }
+
+  .modal-header {
+    padding: 14px 16px;
+  }
+
+  .modal-body {
+    padding: 16px;
+  }
+
+  /* Toast Container on Mobile */
+  #toast-container {
+    bottom: calc(var(--mobile-nav-height) + 12px);
+    right: 12px;
+    left: 12px;
+  }
+
+  .toast {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-icon-label span {
+    display: none;
+  }
+
+  .action-btn span {
+    font-size: 11px;
+  }
+
+  .post-actions {
+    gap: 0;
+  }
+}

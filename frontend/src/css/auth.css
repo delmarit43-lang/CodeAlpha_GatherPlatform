@@ -189,3 +189,21 @@
     padding: 36px 28px;
   }
 }
+
+@media (max-width: 480px) {
+  .auth-wrapper {
+    padding: 16px 10px;
+  }
+
+  .auth-brand-panel {
+    padding: 24px 20px;
+  }
+
+  .auth-form-panel {
+    padding: 28px 20px;
+  }
+
+  .auth-brand-title {
+    font-size: 22px;
+  }
+}
