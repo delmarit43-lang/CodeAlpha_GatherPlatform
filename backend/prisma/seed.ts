@@ -6,14 +6,8 @@ const prisma = new PrismaClient();
 async function main() {
   console.log('🌱 Seeding GatherPlatform database...');
 
-  // Clean existing data
-  await prisma.notification.deleteMany();
-  await prisma.bookmark.deleteMany();
-  await prisma.like.deleteMany();
-  await prisma.comment.deleteMany();
-  await prisma.follow.deleteMany();
-  await prisma.post.deleteMany();
-  await prisma.user.deleteMany();
+  // Clean existing data cleanly with CASCADE
+  await prisma.$executeRawUnsafe('TRUNCATE TABLE notifications, bookmarks, likes, comments, follows, posts, users RESTART IDENTITY CASCADE;');
 
   const defaultPassword = await bcrypt.hash('password123', 10);
 
@@ -24,6 +18,7 @@ async function main() {
       username: 'siddiiq',
       email: 'siddiiq@gather.com',
       passwordHash: defaultPassword,
+      avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80',
       bio: 'Full Stack Intern @ CodeAlpha. Building Gather Platform!',
       location: 'Hargeisa, Somaliland',
     },
@@ -35,6 +30,7 @@ async function main() {
       username: 'ahmedy',
       email: 'ahmed@gather.com',
       passwordHash: defaultPassword,
+      avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=250&q=80',
       bio: 'Spent the morning working on a small PostgreSQL project. Software developer and tech explorer.',
       location: 'Hargeisa, Somaliland',
     },
@@ -46,6 +42,7 @@ async function main() {
       username: 'ayaan_m',
       email: 'ayaan@gather.com',
       passwordHash: defaultPassword,
+      avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=250&q=80',
       bio: 'Tech lead & open-source contributor. Excited about full-stack web dev.',
       location: 'Mogadishu, Somalia',
     },
@@ -57,6 +54,7 @@ async function main() {
       username: 'maryan_a',
       email: 'maryan@gather.com',
       passwordHash: defaultPassword,
+      avatarUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=250&q=80',
       bio: 'UI/UX Designer and Frontend Advocate. Love clean architecture!',
       location: 'Nairobi, Kenya',
     },

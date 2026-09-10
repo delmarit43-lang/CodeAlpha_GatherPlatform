@@ -24,7 +24,7 @@ function formatPost(row: {
       id: row.user.id,
       full_name: row.user.fullName,
       username: row.user.username,
-      avatar_url: row.user.avatarUrl,
+      avatar_url: row.user.avatarUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(row.user.fullName)}&background=6366f1&color=ffffff&bold=true&size=128`,
     },
     like_count: row._count.likes,
     comment_count: row._count.comments,

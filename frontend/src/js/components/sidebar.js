@@ -12,7 +12,7 @@ export function renderSidebar(activePage = 'home', unreadNotificationsCount = 0)
     avatar_url: null
   };
 
-  const initial = currentUser.full_name ? currentUser.full_name[0].toUpperCase() : 'G';
+  const avatarUrl = currentUser.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(currentUser.full_name || 'User')}&background=6366f1&color=ffffff&bold=true&size=128`;
 
   sidebarContainer.innerHTML = `
     <aside class="sidebar-left">
@@ -66,9 +66,7 @@ export function renderSidebar(activePage = 'home', unreadNotificationsCount = 0)
       <div style="position: relative;">
         <div class="sidebar-user" id="sidebar-user-trigger">
           <div style="display: flex; align-items: center; gap: 10px; overflow: hidden;">
-            ${currentUser.avatar_url 
-              ? `<img src="${currentUser.avatar_url}" alt="${currentUser.full_name}" class="user-avatar-sm">`
-              : `<div class="user-avatar-sm">${initial}</div>`}
+            <img src="${avatarUrl}" alt="${currentUser.full_name}" class="user-avatar-sm">
             <div class="user-info-text">
               <span class="user-info-name">${currentUser.full_name}</span>
               <span class="user-info-handle">@${currentUser.username}</span>

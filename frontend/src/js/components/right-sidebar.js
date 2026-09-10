@@ -9,10 +9,10 @@ export function renderRightSidebar(suggestedUsers = [], trendingTopics = []) {
 
   // Default suggested people if none supplied
   const defaultPeople = suggestedUsers.length ? suggestedUsers : [
-    { id: 2, full_name: 'Ayaan Mohamed', username: 'ayaan_m', bio: 'Software Architect & Tech enthusiast', is_following: false },
-    { id: 3, full_name: 'Abdi Hassan', username: 'abdi_h', bio: 'Product Designer & Photographer', is_following: false },
-    { id: 4, full_name: 'Maryan Ali', username: 'maryan_a', bio: 'Data Analyst & Educator', is_following: false },
-    { id: 5, full_name: 'Yusuf Ahmed', username: 'yusuf_a', bio: 'Full-stack Developer', is_following: false }
+    { id: 2, full_name: 'Ayaan Mohamed', username: 'ayaan_m', avatar_url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=250&q=80', bio: 'Software Architect & Tech enthusiast', is_following: false },
+    { id: 3, full_name: 'Abdi Hassan', username: 'abdi_h', avatar_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=250&q=80', bio: 'Product Designer & Photographer', is_following: false },
+    { id: 4, full_name: 'Maryan Ali', username: 'maryan_a', avatar_url: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=250&q=80', bio: 'Data Analyst & Educator', is_following: false },
+    { id: 5, full_name: 'Yusuf Ahmed', username: 'yusuf_a', avatar_url: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=250&q=80', bio: 'Full-stack Developer', is_following: false }
   ];
 
   const defaultTopics = trendingTopics.length ? trendingTopics : [
@@ -38,13 +38,11 @@ export function renderRightSidebar(suggestedUsers = [], trendingTopics = []) {
         <h3 class="widget-title">People to Follow</h3>
         <div class="people-list">
           ${defaultPeople.map(person => {
-            const initial = person.full_name ? person.full_name[0].toUpperCase() : 'U';
+            const avatarUrl = person.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(person.full_name || 'User')}&background=6366f1&color=ffffff&bold=true&size=128`;
             return `
               <div class="person-item" data-user-id="${person.id}">
                 <a href="/profile.html?username=${person.username}" class="person-info">
-                  ${person.avatar_url 
-                    ? `<img src="${person.avatar_url}" class="user-avatar-sm" alt="${person.full_name}">`
-                    : `<div class="user-avatar-sm">${initial}</div>`}
+                  <img src="${avatarUrl}" class="user-avatar-sm" alt="${person.full_name}">
                   <div>
                     <div class="person-name">${person.full_name}</div>
                     <div class="person-handle">@${person.username}</div>

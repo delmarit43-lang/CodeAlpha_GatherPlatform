@@ -12,7 +12,7 @@ function formatUser(user: {
     full_name: user.fullName,
     username: user.username,
     email: user.email,
-    avatar_url: user.avatarUrl,
+    avatar_url: user.avatarUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.fullName)}&background=6366f1&color=ffffff&bold=true&size=128`,
     bio: user.bio,
     location: user.location,
     created_at: user.createdAt,
@@ -95,7 +95,7 @@ export async function searchUsers(query: string, currentUserId: number) {
     id: u.id,
     full_name: u.fullName,
     username: u.username,
-    avatar_url: u.avatarUrl,
+    avatar_url: u.avatarUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(u.fullName)}&background=6366f1&color=ffffff&bold=true&size=128`,
     bio: u.bio,
     is_following: u.followers.length > 0,
   }));

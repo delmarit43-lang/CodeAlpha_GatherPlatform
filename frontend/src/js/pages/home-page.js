@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       {
         id: 101,
         user_id: 2,
-        user: { full_name: 'Ahmed Yusuf', username: 'ahmedy', avatar_url: null },
+        user: { full_name: 'Ahmed Yusuf', username: 'ahmedy', avatar_url: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=250&q=80' },
         content: 'Spent the morning working on a small PostgreSQL project. Sometimes the simplest database designs are the hardest to get right.',
         created_at: new Date(Date.now() - 7200000).toISOString(),
         like_count: 24,
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       {
         id: 102,
         user_id: 3,
-        user: { full_name: 'Ayaan Mohamed', username: 'ayaan_m', avatar_url: null },
+        user: { full_name: 'Ayaan Mohamed', username: 'ayaan_m', avatar_url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=250&q=80' },
         content: 'Excited to announce our upcoming community tech meetup in Hargeisa! We will be discussing modern full-stack development with #WebDevelopment and #SomalilandTech.',
         created_at: new Date(Date.now() - 14400000).toISOString(),
         like_count: 42,
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       {
         id: 103,
         user_id: 4,
-        user: { full_name: 'Maryan Ali', username: 'maryan_a', avatar_url: null },
+        user: { full_name: 'Maryan Ali', username: 'maryan_a', avatar_url: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=250&q=80' },
         content: 'Reading "Clean Code" by Robert C. Martin again this weekend. A timeless reminder that readable code is writing for humans first, machines second. #Books',
         created_at: new Date(Date.now() - 28800000).toISOString(),
         like_count: 19,

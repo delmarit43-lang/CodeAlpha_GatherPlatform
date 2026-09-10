@@ -27,7 +27,7 @@ export function createPostCardHTML(post) {
     avatar_url: post.avatar_url || null
   };
 
-  const initial = author.full_name ? author.full_name[0].toUpperCase() : 'U';
+  const avatarUrl = author.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(author.full_name || 'User')}&background=6366f1&color=ffffff&bold=true&size=128`;
   const formattedTime = formatTimeAgo(post.created_at);
 
   const isLiked = !!post.is_liked;
@@ -39,9 +39,7 @@ export function createPostCardHTML(post) {
     <article class="post-card" data-post-id="${post.id}">
       <div class="post-avatar-col">
         <a href="/profile.html?username=${author.username}">
-          ${author.avatar_url 
-            ? `<img src="${author.avatar_url}" class="user-avatar" alt="${author.full_name}">`
-            : `<div class="user-avatar">${initial}</div>`}
+          <img src="${avatarUrl}" class="user-avatar" alt="${author.full_name}">
         </a>
       </div>
 
