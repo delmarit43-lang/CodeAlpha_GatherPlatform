@@ -23,6 +23,7 @@ export const updateProfileSchema = z.object({
   bio: z.string().max(500).optional(),
   location: z.string().max(100).optional(),
   avatar_url: z.string().optional(),
+  cover_url: z.string().optional(),
 });
 
 // ── Post ──────────────────────────────────────────────────────

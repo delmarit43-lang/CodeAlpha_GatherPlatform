@@ -177,9 +177,9 @@ export function attachPostEventListeners(container, onDeleteCallback) {
 
       try {
         if (isBookmarked) {
-          await api.delete(`/posts/${postId}/bookmark`);
+          await api.delete(`/bookmarks/${postId}`);
         } else {
-          await api.post(`/posts/${postId}/bookmark`, {});
+          await api.post(`/bookmarks/${postId}`, {});
         }
       } catch (err) {
         console.warn('Bookmark action handled optimistically.');

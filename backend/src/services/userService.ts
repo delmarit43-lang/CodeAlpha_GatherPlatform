@@ -5,7 +5,7 @@ import { UserProfile, SafeUser } from '../types';
 
 function formatUser(user: {
   id: number; fullName: string; username: string; email: string;
-  avatarUrl: string | null; bio: string | null; location: string | null; createdAt: Date;
+  avatarUrl: string | null; coverUrl?: string | null; bio: string | null; location: string | null; createdAt: Date;
 }): SafeUser {
   return {
     id: user.id,
@@ -13,6 +13,7 @@ function formatUser(user: {
     username: user.username,
     email: user.email,
     avatar_url: user.avatarUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.fullName)}&background=6366f1&color=ffffff&bold=true&size=128`,
+    cover_url: user.coverUrl || null,
     bio: user.bio,
     location: user.location,
     created_at: user.createdAt,
@@ -56,6 +57,7 @@ export async function updateProfile(userId: number, data: UpdateProfileInput): P
       ...(data.bio !== undefined && { bio: data.bio }),
       ...(data.location !== undefined && { location: data.location }),
       ...(data.avatar_url !== undefined && { avatarUrl: data.avatar_url || null }),
+      ...(data.cover_url !== undefined && { coverUrl: data.cover_url || null }),
     },
   });
   return formatUser(updated);

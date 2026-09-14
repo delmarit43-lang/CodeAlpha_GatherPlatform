@@ -44,6 +44,7 @@ export interface SafeUser {
   username: string;
   email: string;
   avatar_url: string | null;
+  cover_url?: string | null;
   bio: string | null;
   location: string | null;
   created_at: Date;

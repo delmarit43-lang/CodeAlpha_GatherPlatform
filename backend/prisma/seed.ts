@@ -60,7 +60,7 @@ async function main() {
     },
   });
 
-  console.log(` Created 4 users.`);
+  console.log('✅ Created 4 users.');
 
   // Seed Follows
   await prisma.follow.createMany({
@@ -101,7 +101,7 @@ async function main() {
     },
   });
 
-  console.log(` Created 4 posts.`);
+  console.log('✅ Created 4 posts.');
 
   // Seed Likes
   await prisma.like.createMany({
@@ -151,7 +151,7 @@ async function main() {
     ],
   });
 
-  console.log(' Database seed completed successfully!');
+  console.log('🎉 Database seed completed successfully!');
 }
 
 main()

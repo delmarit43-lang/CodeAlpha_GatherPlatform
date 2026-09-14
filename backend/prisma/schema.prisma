@@ -17,6 +17,7 @@ model User {
   email        String   @unique @db.VarChar(150)
   passwordHash String   @map("password_hash") @db.VarChar(255)
   avatarUrl    String?  @map("avatar_url")
+  coverUrl     String?  @map("cover_url")
   bio          String?
   location     String?  @db.VarChar(100)
   createdAt    DateTime @default(now()) @map("created_at")

@@ -28,7 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const removeAvatarBtn = document.getElementById('remove-avatar-btn');
   const presetAvatarImgs = document.querySelectorAll('.preset-avatar-opt');
 
+  // Cover Elements
+  const coverFileInput = document.getElementById('setting-cover-file');
+  const coverUrlInput = document.getElementById('setting-cover');
+  const removeCoverBtn = document.getElementById('remove-cover-btn');
+
   let currentAvatarData = currentUser?.avatar_url || '';
+  let currentCoverData = currentUser?.cover_url || '';
 
   function updateAvatarPreview(url) {
     currentAvatarData = url || '';
@@ -46,6 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function updateCoverValue(url) {
+    currentCoverData = url || '';
+    if (coverUrlInput) coverUrlInput.value = url || '';
+  }
+
   // Populate Initial Values
   if (currentUser) {
     document.getElementById('setting-fullname').value = currentUser.full_name || '';
@@ -54,9 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('setting-bio').value = currentUser.bio || '';
     document.getElementById('setting-location').value = currentUser.location || '';
     updateAvatarPreview(currentUser.avatar_url);
+    updateCoverValue(currentUser.cover_url);
   }
 
-  // File Upload Handler (FileReader Data URL)
+  // File Upload Handler (FileReader Data URL for Avatar)
   if (avatarFileInput) {
     avatarFileInput.addEventListener('change', (e) => {
       const file = e.target.files[0];
@@ -77,12 +89,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // File Upload Handler for Cover Banner Photo
+  if (coverFileInput) {
+    coverFileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      if (file.size > 5 * 1024 * 1024) {
+        showToast('Cover image size must be less than 5MB', 'error');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const base64Url = event.target.result;
+        updateCoverValue(base64Url);
+        showToast('Cover banner uploaded! Click "Save Profile Changes" to apply.', 'info');
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
   // Preset Avatars Handler
   presetAvatarImgs.forEach(img => {
     img.addEventListener('click', () => {
       const url = img.getAttribute('data-url');
       updateAvatarPreview(url);
       showToast('Preset avatar selected', 'info');
+    });
+  });
+
+  // Preset Cover Banner Handler
+  const presetCoverOpts = document.querySelectorAll('.preset-cover-opt');
+  presetCoverOpts.forEach(el => {
+    el.addEventListener('click', () => {
+      const url = el.getAttribute('data-url');
+      updateCoverValue(url);
+      showToast('Preset cover banner selected!', 'info');
     });
   });
 
@@ -94,10 +137,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Remove Cover Handler
+  if (removeCoverBtn) {
+    removeCoverBtn.addEventListener('click', () => {
+      updateCoverValue('');
+      showToast('Cover banner removed', 'info');
+    });
+  }
+
   // Text URL input manual change
   if (avatarUrlInput) {
     avatarUrlInput.addEventListener('input', (e) => {
       updateAvatarPreview(e.target.value.trim());
+    });
+  }
+
+  if (coverUrlInput) {
+    coverUrlInput.addEventListener('input', (e) => {
+      updateCoverValue(e.target.value.trim());
     });
   }
 
@@ -109,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const bio = document.getElementById('setting-bio').value.trim();
       const location = document.getElementById('setting-location').value.trim();
       const avatar_url = currentAvatarData || avatarUrlInput.value.trim();
+      const cover_url = currentCoverData || (coverUrlInput ? coverUrlInput.value.trim() : '');
 
       const submitBtn = form.querySelector('button[type="submit"]');
       submitBtn.disabled = true;
@@ -119,15 +177,16 @@ document.addEventListener('DOMContentLoaded', () => {
           full_name,
           bio,
           location,
-          avatar_url
+          avatar_url,
+          cover_url
         });
 
-        auth.updateUser(updated || { full_name, bio, location, avatar_url });
+        auth.updateUser(updated || { full_name, bio, location, avatar_url, cover_url });
         showToast('Profile updated successfully!', 'success');
         renderSidebar('settings');
       } catch (err) {
         // Local fallback update
-        auth.updateUser({ full_name, bio, location, avatar_url });
+        auth.updateUser({ full_name, bio, location, avatar_url, cover_url });
         showToast('Profile saved locally!', 'success');
         renderSidebar('settings');
       } finally {
